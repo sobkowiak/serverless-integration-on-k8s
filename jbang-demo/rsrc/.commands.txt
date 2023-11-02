@@ -1,0 +1,27 @@
+
+curl -Ls https://sh.jbang.dev | bash -s - app setup
+
+jbang app install camel@apache/camel
+
+camel -V
+jbang run -Dcamel.jbang.version=3.20.1 camel@apache/camel -V
+
+camel init Sample.java
+
+camel run Sample.java --dev
+
+camel dependencies --runtime quarkus
+
+camel dependencies --runtime spring-boot
+
+camel export --runtime=quarkus --gav=com.foo:acme:1.0-SNAPSHOT --directory=test-quarkus
+
+camel export --runtime=spring-boot --gav=com.foo:acme:1.0-SNAPSHOT --directory=test-sb
+
+cd test-quarkus
+mvn quarkus:dev
+
+cd test-sb
+mvn spring-boot:run
+
+
