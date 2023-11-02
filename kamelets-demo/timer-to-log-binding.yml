@@ -1,0 +1,22 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  creationTimestamp: null
+  name: timer-source-to-log-sink
+  namespace: knative-demo
+spec:
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: log-sink
+      namespace: knative-demo
+  source:
+    properties:
+      message: Hello Kamelets
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: timer-source
+      namespace: knative-demo
+status: {}
