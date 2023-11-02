@@ -1,0 +1,11 @@
+- route:
+    id: route-7da2
+    from:
+      id: from-8d6e
+      uri: file:/tmp/in
+      steps:
+      - log:
+          id: log-173e
+          message: "${headers.CamelFileName} reseived"
+      - to:
+          uri: file:/tmp/out

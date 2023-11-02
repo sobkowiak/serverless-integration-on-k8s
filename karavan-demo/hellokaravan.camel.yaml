@@ -1,0 +1,17 @@
+- route:
+    id: route-3eb8
+    from:
+      uri: timer
+      id: from-0e40
+      parameters:
+        timerName: test
+      steps:
+        - setBody:
+            expression:
+              simple:
+                expression: Hello Karavan
+                id: simple-24e5
+            id: setBody-166a
+        - log:
+            message: Received ${body}
+            id: log-c9c6
