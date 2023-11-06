@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "acb5034a-ea01-40e1-89fc-1bacfe8ecf3c",
+		"name": "Camel-K API Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13479592"
+	},
+	"item": [
+		{
+			"name": "List all objects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sobkowiakcg-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/v1",
+					"protocol": "https",
+					"host": [
+						"api-sobkowiakcg-dev",
+						"apps",
+						"sandbox-m2",
+						"ll9k",
+						"p1",
+						"openshiftapps",
+						"com"
+					],
+					"path": [
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store a Hello object",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Hello 4Developers"
+				},
+				"url": {
+					"raw": "https://api-sobkowiakcg-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/v1/hello",
+					"protocol": "https",
+					"host": [
+						"api-sobkowiakcg-dev",
+						"apps",
+						"sandbox-m2",
+						"ll9k",
+						"p1",
+						"openshiftapps",
+						"com"
+					],
+					"path": [
+						"v1",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hello object",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sobkowiakcg-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/v1/hello",
+					"protocol": "https",
+					"host": [
+						"api-sobkowiakcg-dev",
+						"apps",
+						"sandbox-m2",
+						"ll9k",
+						"p1",
+						"openshiftapps",
+						"com"
+					],
+					"path": [
+						"v1",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get existing object",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sobkowiakcg-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/v1/fbf1695e-4a55-4294-ba9b-1f0168127179",
+					"protocol": "https",
+					"host": [
+						"api-sobkowiakcg-dev",
+						"apps",
+						"sandbox-m2",
+						"ll9k",
+						"p1",
+						"openshiftapps",
+						"com"
+					],
+					"path": [
+						"v1",
+						"fbf1695e-4a55-4294-ba9b-1f0168127179"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Hello object",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api-sobkowiakcg-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/v1/hello",
+					"protocol": "https",
+					"host": [
+						"api-sobkowiakcg-dev",
+						"apps",
+						"sandbox-m2",
+						"ll9k",
+						"p1",
+						"openshiftapps",
+						"com"
+					],
+					"path": [
+						"v1",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
