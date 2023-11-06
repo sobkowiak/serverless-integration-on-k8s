@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: telegram-kafka
+    app: telegram-kafka
+    application: telegram-service
+    system: telegram-integration
+  name: telegram-kafka
+spec:
+  ports:
+    - port: 9092
+      protocol: TCP
+      targetPort: 9092
+  selector:
+    name: telegram-kafka
+  type: ClusterIP
+  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: telegram-kafka
+    application: telegram-service
+    system: telegram-integration
+    app.openshift.io/runtime: amq
+  name: telegram-kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: telegram-kafka
+  template:
+    metadata:
+      labels:
+        application: telegram-service
+        name: telegram-kafka
+        system: telegram-integration
+    spec:
+      containers:
+        - command:
+            - sh
+            - -c
+            - "export CLUSTER_ID=$(bin/kafka-storage.sh random-uuid) && bin/kafka-storage.sh\
+              \ format -t ${CLUSTER_ID} -c config/kraft/server.properties && bin/kafka-server-start.sh\
+              \ config/kraft/server.properties --override advertised.listeners=${KAFKA_ADVERTISED_LISTENERS}"
+          env:
+            - name: LOG_DIR
+              value: /tmp/logs
+            - name: KAFKA_ADVERTISED_LISTENERS
+              value: PLAINTEXT://telegram-kafka:9092
+          image: quay.io/strimzi/kafka:0.34.0-kafka-3.4.0
+          name: telegram-kafka
+          ports:
+            - containerPort: 9092
+          resources:
+            limits:
+              memory: 768Mi
+            requests:
+              memory: 128Mi
